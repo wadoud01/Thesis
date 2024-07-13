@@ -1176,6 +1176,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303815831}
   m_Mesh: {fileID: -5707854879342018632, guid: d4184d93131cf8718b4aef268677335e, type: 3}
+--- !u!1 &346612021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 346612023}
+  - component: {fileID: 346612024}
+  m_Layer: 0
+  m_Name: JointStateSubscriber
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &346612023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346612021}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &346612024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346612021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae35654ba0f1c6429958628c768680f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topicName: /joint_states
+  robot: {fileID: 1559383402}
 --- !u!1 &352781476
 GameObject:
   m_ObjectHideFlags: 0
@@ -5394,6 +5440,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1559383403}
   - component: {fileID: 1559383404}
+  - component: {fileID: 1559383405}
+  - component: {fileID: 1559383406}
   m_Layer: 0
   m_Name: panda0
   m_TagString: Untagged
@@ -5439,6 +5487,40 @@ MonoBehaviour:
   m_TFTopics:
   - /tf
   listenForTFMessages: 1
+--- !u!114 &1559383405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559383402}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84fdc8720ce224dd2b326b4ee2298132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionSensor: {x: 0.5, y: 0.5, z: 0.5}
+  ReadyToStart: 0
+  ForwardKinematicControl: 1
+  InverseKinematicControl: 0
+  TorqueControl: 0
+  FKControlInitialised: 0
+  IKControlInitialised: 0
+  TorqueControlInitialised: 0
+--- !u!114 &1559383406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559383402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae35654ba0f1c6429958628c768680f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topicName: /joint_states
+  robot: {fileID: 1559383402}
 --- !u!1 &1592210183
 GameObject:
   m_ObjectHideFlags: 0
@@ -7255,3 +7337,4 @@ SceneRoots:
   - {fileID: 157679226}
   - {fileID: 1559383403}
   - {fileID: 1332865418}
+  - {fileID: 346612023}
