@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 55411921}
   - component: {fileID: 55411920}
   m_Layer: 0
-  m_Name: panda_link7
+  m_Name: panda_joint7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,7 @@ ArticulationBody:
   m_LinearZ: 2
   m_SwingY: 2
   m_SwingZ: 2
-  m_Twist: 1
+  m_Twist: 2
   m_XDrive:
     lowerLimit: -165
     upperLimit: 165
@@ -216,7 +216,7 @@ ArticulationBody:
     forceLimit: 10000
     target: 0
     targetVelocity: 0
-    driveType: 0
+    driveType: 3
   m_YDrive:
     lowerLimit: 0
     upperLimit: 0
@@ -252,6 +252,50 @@ ArticulationBody:
   m_Immovable: 0
   m_UseGravity: 1
   m_CollisionDetectionMode: 0
+--- !u!1 &72592478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 72592480}
+  - component: {fileID: 72592479}
+  m_Layer: 0
+  m_Name: ROSTopicDebugger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &72592479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72592478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8c7e4691e5a6241913a08af2f26d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &72592480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72592478}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &111492609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,8 +1264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae35654ba0f1c6429958628c768680f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topicName: /joint_states
-  robot: {fileID: 1559383402}
+  jointArticulationBodies: []
 --- !u!1 &352781476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,7 +1780,7 @@ GameObject:
   - component: {fileID: 506955765}
   - component: {fileID: 506955764}
   m_Layer: 0
-  m_Name: panda_link1
+  m_Name: panda_joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1838,7 +1881,7 @@ ArticulationBody:
   m_LinearZ: 0
   m_SwingY: 2
   m_SwingZ: 2
-  m_Twist: 1
+  m_Twist: 2
   m_XDrive:
     lowerLimit: -166
     upperLimit: 166
@@ -1847,7 +1890,7 @@ ArticulationBody:
     forceLimit: 3.402823e+10
     target: 0
     targetVelocity: 0
-    driveType: 0
+    driveType: 3
   m_YDrive:
     lowerLimit: 0
     upperLimit: 0
@@ -2610,7 +2653,7 @@ GameObject:
   - component: {fileID: 688075603}
   - component: {fileID: 688075602}
   m_Layer: 0
-  m_Name: panda_rightfinger
+  m_Name: panda_finger_joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2684,7 +2727,7 @@ ArticulationBody:
   m_AnchorRotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
   m_MatchAnchors: 1
   m_ArticulationJointType: 1
-  m_LinearX: 1
+  m_LinearX: 2
   m_LinearY: 0
   m_LinearZ: 0
   m_SwingY: 2
@@ -2698,7 +2741,7 @@ ArticulationBody:
     forceLimit: 3.402823e+10
     target: 0
     targetVelocity: 0
-    driveType: 0
+    driveType: 3
   m_YDrive:
     lowerLimit: 0
     upperLimit: 0
@@ -3630,7 +3673,7 @@ ArticulationBody:
   m_LinearZ: 2
   m_SwingY: 2
   m_SwingZ: 2
-  m_Twist: 1
+  m_Twist: 2
   m_XDrive:
     lowerLimit: -170
     upperLimit: 170
@@ -3639,7 +3682,7 @@ ArticulationBody:
     forceLimit: 3.402823e+10
     target: 0
     targetVelocity: 0
-    driveType: 0
+    driveType: 3
   m_YDrive:
     lowerLimit: 0
     upperLimit: 0
@@ -3675,6 +3718,50 @@ ArticulationBody:
   m_Immovable: 0
   m_UseGravity: 0
   m_CollisionDetectionMode: 0
+--- !u!1 &982211041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 982211043}
+  - component: {fileID: 982211042}
+  m_Layer: 0
+  m_Name: ROSPositionLogger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &982211042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982211041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7413f9a0a27944a87c8c38a7616482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &982211043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982211041}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &992555633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4353,7 +4440,7 @@ GameObject:
   - component: {fileID: 1246712780}
   - component: {fileID: 1246712779}
   m_Layer: 0
-  m_Name: panda_leftfinger
+  m_Name: panda_finger_joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4427,7 +4514,7 @@ ArticulationBody:
   m_AnchorRotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
   m_MatchAnchors: 1
   m_ArticulationJointType: 1
-  m_LinearX: 1
+  m_LinearX: 2
   m_LinearY: 0
   m_LinearZ: 0
   m_SwingY: 2
@@ -4441,7 +4528,7 @@ ArticulationBody:
     forceLimit: 3.402823e+10
     target: 0
     targetVelocity: 0
-    driveType: 0
+    driveType: 3
   m_YDrive:
     lowerLimit: 0
     upperLimit: 0
@@ -4656,7 +4743,7 @@ GameObject:
   - component: {fileID: 1325510766}
   - component: {fileID: 1325510765}
   m_Layer: 0
-  m_Name: panda_link5
+  m_Name: panda_joint5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4736,7 +4823,7 @@ ArticulationBody:
   m_LinearZ: 2
   m_SwingY: 2
   m_SwingZ: 2
-  m_Twist: 1
+  m_Twist: 2
   m_XDrive:
     lowerLimit: -166
     upperLimit: 166
@@ -4745,7 +4832,7 @@ ArticulationBody:
     forceLimit: 5000
     target: 0
     targetVelocity: 0
-    driveType: 0
+    driveType: 3
   m_YDrive:
     lowerLimit: 0
     upperLimit: 0
@@ -5004,7 +5091,7 @@ GameObject:
   - component: {fileID: 1455770522}
   - component: {fileID: 1455770521}
   m_Layer: 0
-  m_Name: panda_link3
+  m_Name: panda_joint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5085,7 +5172,7 @@ ArticulationBody:
   m_LinearZ: 2
   m_SwingY: 2
   m_SwingZ: 2
-  m_Twist: 1
+  m_Twist: 2
   m_XDrive:
     lowerLimit: -166
     upperLimit: 166
@@ -5094,7 +5181,7 @@ ArticulationBody:
     forceLimit: 5000
     target: 0
     targetVelocity: 0
-    driveType: 0
+    driveType: 3
   m_YDrive:
     lowerLimit: 0
     upperLimit: 0
@@ -5516,11 +5603,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1559383402}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ae35654ba0f1c6429958628c768680f, type: 3}
+  m_Script: {fileID: 11500000, guid: ff7413f9a0a27944a87c8c38a7616482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topicName: /joint_states
-  robot: {fileID: 1559383402}
 --- !u!1 &1592210183
 GameObject:
   m_ObjectHideFlags: 0
@@ -5617,7 +5702,7 @@ GameObject:
   - component: {fileID: 1601864022}
   - component: {fileID: 1601864021}
   m_Layer: 0
-  m_Name: panda_link6
+  m_Name: panda_joint6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5711,7 +5796,7 @@ ArticulationBody:
   m_LinearZ: 2
   m_SwingY: 2
   m_SwingZ: 2
-  m_Twist: 1
+  m_Twist: 2
   m_XDrive:
     lowerLimit: -215
     upperLimit: 1
@@ -5720,7 +5805,7 @@ ArticulationBody:
     forceLimit: 5000
     target: 0
     targetVelocity: 0
-    driveType: 0
+    driveType: 3
   m_YDrive:
     lowerLimit: 0
     upperLimit: 0
@@ -6837,7 +6922,7 @@ GameObject:
   - component: {fileID: 2017135342}
   - component: {fileID: 2017135341}
   m_Layer: 0
-  m_Name: panda_link4
+  m_Name: panda_joint4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6918,7 +7003,7 @@ ArticulationBody:
   m_LinearZ: 2
   m_SwingY: 2
   m_SwingZ: 2
-  m_Twist: 1
+  m_Twist: 2
   m_XDrive:
     lowerLimit: 4
     upperLimit: 176
@@ -6927,7 +7012,7 @@ ArticulationBody:
     forceLimit: 5000
     target: 0
     targetVelocity: 0
-    driveType: 0
+    driveType: 3
   m_YDrive:
     lowerLimit: 0
     upperLimit: 0
@@ -6979,7 +7064,7 @@ GameObject:
   - component: {fileID: 2027577846}
   - component: {fileID: 2027577845}
   m_Layer: 0
-  m_Name: panda_link2
+  m_Name: panda_joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7068,7 +7153,7 @@ ArticulationBody:
   m_LinearZ: 2
   m_SwingY: 2
   m_SwingZ: 2
-  m_Twist: 1
+  m_Twist: 2
   m_XDrive:
     lowerLimit: -101
     upperLimit: 101
@@ -7077,7 +7162,7 @@ ArticulationBody:
     forceLimit: 3.402823e+10
     target: 0
     targetVelocity: 0
-    driveType: 0
+    driveType: 3
   m_YDrive:
     lowerLimit: 0
     upperLimit: 0
@@ -7338,3 +7423,5 @@ SceneRoots:
   - {fileID: 1559383403}
   - {fileID: 1332865418}
   - {fileID: 346612023}
+  - {fileID: 72592480}
+  - {fileID: 982211043}

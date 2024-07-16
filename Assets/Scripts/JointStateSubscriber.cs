@@ -1,40 +1,46 @@
 using UnityEngine;
-using RosMessageTypes.Sensor;
-using Unity.Robotics.ROSTCPConnector;
-using Unity.Robotics.ROSTCPConnector.ROSGeometry;
-using System.Collections.Generic;
+using RosMessageTypes.Sensor;  // Ensure you have the correct namespace for JointStateMsg
 
 public class JointStateSubscriber : MonoBehaviour
 {
-    ROSConnection ros;
-    public string topicName = "/joint_states";
-    public GameObject robot;
-    private ArticulationBody[] jointArticulationBodies;
+    // Define your ArticulationBodies here
+    public ArticulationBody[] jointArticulationBodies;
 
-    void Start()
+    // This method updates when a new JointStateMsg is received
+    public void UpdateJointStates(JointStateMsg jointStateMsg)
     {
-        ros = ROSConnection.instance;
-        ros.Subscribe<JointStateMsg>(topicName, UpdateJointStates);
+        Debug.Log("Received new JointStateMsg.");
 
-        // Initialize the joints
-        jointArticulationBodies = robot.GetComponentsInChildren<ArticulationBody>();
-    }
+        // Log the number of joints received
+        int numReceivedJoints = jointStateMsg.name.Length;
+        Debug.Log($"Number of joints received: {numReceivedJoints}");
 
-    void UpdateJointStates(JointStateMsg jointStateMessage)
-    {
-        // Ensure the number of joints in the message matches the robot's joints
-        if (jointStateMessage.position.Length != jointArticulationBodies.Length)
+        // Log the expected number of joints
+        int numExpectedJoints = jointArticulationBodies.Length;
+        Debug.Log($"Number of expected joints: {numExpectedJoints}");
+
+        // Check if the number of received joints matches the expected
+        if (numReceivedJoints != numExpectedJoints)
         {
-            Debug.LogError("Joint state message length does not match the number of robot joints.");
-            return;
+            Debug.LogError($"Joint state message length ({numReceivedJoints}) does not match the number of robot joints ({numExpectedJoints}).");
+            return; // Exit the method or add error handling
         }
 
-        // Update each joint's target position
-        for (int i = 0; i < jointArticulationBodies.Length; i++)
+        // Loop through each joint in the message
+        for (int i = 0; i < numReceivedJoints; i++)
         {
-            var jointDrive = jointArticulationBodies[i].xDrive;
-            jointDrive.target = (float)(jointStateMessage.position[i] * Mathf.Rad2Deg); // Convert from radians to degrees
-            jointArticulationBodies[i].xDrive = jointDrive;
+            string jointName = jointStateMsg.name[i];
+            double jointPosition = jointStateMsg.position[i];
+
+            // Log each joint's name and position
+            Debug.Log($"Joint {i + 1}: {jointName} - Position: {jointPosition}");
+
+            // Update the corresponding ArticulationBody's position
+            if (i < jointArticulationBodies.Length)
+            {
+                jointArticulationBodies[i].transform.localPosition = new Vector3(0, (float)jointPosition, 0); // Convert double to float if necessary
+            }
         }
     }
+    
 }
