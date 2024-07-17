@@ -3,15 +3,13 @@ using RosMessageTypes.Sensor;
 using Unity.Robotics.ROSTCPConnector;
 using System.Collections.Generic;
 
-public class ROSVelocityLogger : MonoBehaviour
+public class ROSPositionLogger : MonoBehaviour
 {
     // ROS connection variable
     private ROSConnection ros;
 
-    // Dictionary to map joint names to their corresponding transforms in Unity
-    private Dictionary<string, Transform> jointTransforms;
-    private Dictionary<string, float> jointVelocities;
-    private Dictionary<string, float> jointEfforts;
+    // Dictionary to map joint names to their corresponding ArticulationBody components in Unity
+    private Dictionary<string, ArticulationBody> jointArticulations;
 
     void Start()
     {
@@ -22,77 +20,42 @@ public class ROSVelocityLogger : MonoBehaviour
         ros.Subscribe<JointStateMsg>("/joint_states", UpdateJointStates);
 
         // Initialize joint mappings (replace with actual joint names in Unity)
-        jointTransforms = new Dictionary<string, Transform>
+        jointArticulations = new Dictionary<string, ArticulationBody>
         {
-            { "panda_joint1", GameObject.Find("panda_joint1").transform },
-            { "panda_joint2", GameObject.Find("panda_joint2").transform },
-            { "panda_joint3", GameObject.Find("panda_joint3").transform },
-            { "panda_joint4", GameObject.Find("panda_joint4").transform },
-            { "panda_joint5", GameObject.Find("panda_joint5").transform },
-            { "panda_joint6", GameObject.Find("panda_joint6").transform },
-            { "panda_joint7", GameObject.Find("panda_joint7").transform },
-            { "panda_finger_joint1", GameObject.Find("panda_finger_joint1").transform },
-            { "panda_finger_joint2", GameObject.Find("panda_finger_joint2").transform }
+            { "panda_joint1", GameObject.Find("panda_joint1").GetComponent<ArticulationBody>() },
+            { "panda_joint2", GameObject.Find("panda_joint2").GetComponent<ArticulationBody>() },
+            { "panda_joint3", GameObject.Find("panda_joint3").GetComponent<ArticulationBody>() },
+            { "panda_joint4", GameObject.Find("panda_joint4").GetComponent<ArticulationBody>() },
+            { "panda_joint5", GameObject.Find("panda_joint5").GetComponent<ArticulationBody>() },
+            { "panda_joint6", GameObject.Find("panda_joint6").GetComponent<ArticulationBody>() },
+            { "panda_joint7", GameObject.Find("panda_joint7").GetComponent<ArticulationBody>() },
+            { "panda_finger_joint1", GameObject.Find("panda_finger_joint1").GetComponent<ArticulationBody>() },
+            { "panda_finger_joint2", GameObject.Find("panda_finger_joint2").GetComponent<ArticulationBody>() }
         };
-
-        // Initialize dictionaries for velocities and efforts
-        jointVelocities = new Dictionary<string, float>();
-        jointEfforts = new Dictionary<string, float>();
-        foreach (var joint in jointTransforms.Keys)
-        {
-            jointVelocities[joint] = 0f;
-            jointEfforts[joint] = 0f;
-        }
     }
 
     // This method updates when a new JointStateMsg is received
     private void UpdateJointStates(JointStateMsg jointStateMsg)
     {
-        // Log the received velocities and efforts
-        for (int i = 0; i < jointStateMsg.velocity.Length; i++)
+        // Log the received positions
+        for (int i = 0; i < jointStateMsg.position.Length; i++)
         {
             string jointName = jointStateMsg.name[i];
-            double jointVelocity = jointStateMsg.velocity[i];
-            double jointEffort = jointStateMsg.effort[i];
+            double jointPosition = jointStateMsg.position[i];
 
-            Debug.Log($"Received Joint State: Joint {jointName} - Velocity: {jointVelocity}, Effort: {jointEffort}");
+            Debug.Log($"Received Joint Position: Joint {jointName} - Position: {jointPosition} radians");
 
-            // Update the joint velocity and effort in the dictionaries
-            if (jointVelocities.ContainsKey(jointName))
+            // Update the joint position
+            if (jointArticulations.ContainsKey(jointName))
             {
-                jointVelocities[jointName] = (float)jointVelocity;
+                ArticulationBody jointArticulation = jointArticulations[jointName];
+                ArticulationDrive drive = jointArticulation.xDrive;
+                drive.target = -(float)(jointPosition * Mathf.Rad2Deg); // Convert radians to degrees and multiply by -1
+                jointArticulation.xDrive = drive;
             }
             else
             {
-                Debug.LogWarning($"Joint {jointName} not found in the jointVelocities dictionary.");
-            }
-
-            if (jointEfforts.ContainsKey(jointName))
-            {
-                jointEfforts[jointName] = (float)jointEffort;
-            }
-            else
-            {
-                Debug.LogWarning($"Joint {jointName} not found in the jointEfforts dictionary.");
-            }
-        }
-    }
-
-    void Update()
-    {
-        // Integrate velocities and efforts over time to update joint states
-        float deltaTime = Time.deltaTime;
-
-        foreach (var joint in jointTransforms.Keys)
-        {
-            if (jointTransforms[joint] != null)
-            {
-                float velocity = jointVelocities[joint];
-                float effort = jointEfforts[joint];
-                Transform jointTransform = jointTransforms[joint];
-
-                // Example: Adjust joint rotation based on velocity or effort
-                // (Implement your control logic here based on velocity and effort)
+                Debug.LogWarning($"Joint {jointName} not found in the jointArticulations dictionary.");
             }
         }
     }
