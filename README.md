@@ -23,50 +23,48 @@ This project presents an AR-based control system for the **Franka Panda robotic 
 
 - **User Interface:** Designed in Unity3D and displayed on Hololens 2 using MRTK.  
 - **Robot Control:** ROS and MoveIt are used for real-time motion planning.  
-- **Synchronization:** A UDP-based communication protocol enables data transfer between ROS and Unity.  
+- **Synchronization:** A ROS-TCP communication protocol enables data transfer between ROS and Unity.
+- **Real-Time Data Transformation:** The Data are transformed using UDP protocol to another PC which is connected to the real robot, waiting for the user permission in order to be moved.   
 
-The system allows the user to move the robot using AR buttons and sliders, receiving immediate feedback through an AR-based interface.
+The system allows the user to move the robot using sliders, or a sphere which represents the desired point to be reached, receiving immediate feedback through an AR-based interface.
 
 ---
 
 ## **2. System Components**  
 The system architecture includes the following key components:  
 
-1. **Robot Simulation and Control (ROS):**  
-   - Real-time control and motion planning using MoveIt.  
-   - URDF model of the Franka Panda robot.  
+1. **Robot Simulation and Control (ROS):**
+The repository to the ROS files used : https://github.com/wadoud01/Thesis-ROS
+   - Motion planning using MoveIt.
+   - Feedback robot state publisher.
+   - cordinations sender to real robot using UDP to ensures synchronization between ROS (backend) and Unity (frontend).  
 
 2. **Augmented Reality Interface (Unity3D + Hololens 2):**  
    - Buttons: "Move Hologram," "Grasp," and "Move Real Robot."  
-   - Sliders: Control the X, Y, Z positions in 3D space.  
-   - Feedback Panel: Displays system status and robot responses.  
+   - Sliders: Control the X, Y, Z positions in 3D space.
+   - Sphere (Can be freely placed in space.)
+   - Sliders - Sphere syncronization : The sliders flows the sphere values and vice-versa!
+   - Feedback Panel: Displays system status and robot responses.
+   - Moveing out of the Work-space alert: Once the user places the sphere out the workspace the robot will signal indicating the user to go back inside the possible range. 
 
-3. **Communication Protocol (UDP):**  
-   - Ensures synchronization between ROS (backend) and Unity (frontend).  
+3. **Semi-open loop Real Franka robot control:**  
+   - A simple code that receives the desired joint states coordination from ROS and move the Real-Franka robot to the desired postion, allwoing the possiblity to control all the joints of the Franka-Robot including also the gripper to maintain opening & closing operation!
+   - The repository of the code could be found here: 
 
 ---
 
 ## **3. Features**  
 - **AR-Based Interaction:**  
-  Users control the robot through intuitive AR sliders and buttons in real time.  
+  Users control the robot through intuitive AR sliders and sphere in real time.  
 
-- **Real-Time Feedback:**  
+- **Real-Time Feedback:** 
   Immediate updates on robot status are displayed on the AR interface.  
 
 - **Seamless Synchronization:**  
-  UDP ensures continuous communication between Unity and ROS.  
+  ROS-TCP ensures continuous communication between Unity and ROS.  
 
 - **Path Planning with MoveIt:**  
   Safe and accurate robot motion planning.  
-
----
-
-## **4. Technologies Used**  
-- **ROS (Robot Operating System):** Framework for robot control and motion planning.  
-- **MoveIt:** Path planning and motion execution for the Panda robot.  
-- **Unity3D + MRTK:** AR development for Hololens 2.  
-- **UDP Communication:** Real-time synchronization between Unity and ROS.  
-- **Franka Emika Panda:** Robotic arm used for the project.  
 
 ---
 
@@ -89,11 +87,13 @@ This section explains how to use the AR-based control system to interact with th
    Start the necessary ROS nodes:  
    ```bash
    roslaunch panda_moveit_config demo.launch
+   roslaunch ros_tcp_endpoint endpoint.launch
    rosrun panda_moveit_config unity_coordinate_listener.py
+   rosrun panda_moveit_config pos_upd_sender.py
 Deploy the Unity AR Interface:
 
 2. Open the Unity project provided in the repository.
-Build and deploy the AR application to the Hololens 2 device.
+Deploy the AR application to the Hololens 2 device.
 AR-Based Interaction:
 
 3. Wear the Hololens 2 and interact with the virtual interface:
@@ -259,8 +259,8 @@ The evaluation results show that:
 ---
 
 ### **Future Improvements Based on Feedback**
-- Introduce **voice feedback** for task confirmation.  
-- Add **grid snapping** for sliders to improve precision.  
+- Develop forwards Kenimatics control for more free control.  
+- Move advanced grasping .  
 - Optimize the interface to further reduce **mental workload**.  
 
 ---
