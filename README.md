@@ -134,8 +134,7 @@ A full video demonstration showcasing the AR-based control system in action, inc
 
 #### **AR Interface: Buttons and Sliders**  
 The AR interface consists of control buttons, sliders for spatial inputs, and a feedback text panel.  
-<img src="docs/ar_interface.png" alt="AR_interface" width="300px">
-![AR Interface](docs/ar_interface.png)  
+<img src="docs/ar_interface.png" alt="AR_interface" width="400px">
 
 
 
