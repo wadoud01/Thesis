@@ -90,21 +90,21 @@ This section explains how to use the AR-based control system to interact with th
    roslaunch ros_tcp_endpoint endpoint.launch
    rosrun panda_moveit_config unity_coordinate_listener.py
    rosrun panda_moveit_config pos_upd_sender.py
-Deploy the Unity AR Interface:
+2. Deploy the Unity AR Interface:
 
-2. Open the Unity project provided in the repository.
-Deploy the AR application to the Hololens 2 device.
-AR-Based Interaction:
+   1. Open the Unity project provided in the repository.
+   Deploy the AR application to the Hololens 2 device.
+   AR-Based Interaction:
 
-3. Wear the Hololens 2 and interact with the virtual interface:
-Sliders: Adjust X, Y, Z values to define the target position in space.
-Buttons:
-Move Hologram: Simulates the robot's motion in AR.
-Grasp: Commands the robot to perform a grasping action.
-Move Real Robot: Moves the physical robot to the defined position.
-4. Feedback Panel:
+   2. Wear the Hololens 2 and interact with the virtual interface:
+   Sliders: Adjust X, Y, Z values to define the target position in space.
+   Buttons:
+   Move Hologram: Simulates the robot's motion in AR.
+   Grasp: Commands the robot to perform a grasping action.
+   Move Real Robot: Moves the physical robot to the defined position.
 
-View real-time status updates (e.g., "Goal Reached," "IK Solving") on the AR text panel.
+   3. Feedback Panel:
+   View real-time status updates (e.g., "Goal Reached," "IK Solving") on the AR text panel.
 
 ---
 ## **7. Demonstration**  
