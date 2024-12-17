@@ -84,9 +84,7 @@ This section explains how to use the AR-based control system to interact with th
    Start the necessary ROS nodes:  
    ```bash
    roslaunch panda_moveit_config demo.launch
-   roslaunch ros_tcp_endpoint endpoint.launch
-   rosrun panda_moveit_config unity_coordinate_listener.py
-   rosrun panda_moveit_config pos_upd_sender.py
+
 2. Deploy the Unity AR Interface:
 
    1. Open the Unity project provided in the repository.
