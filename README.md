@@ -68,7 +68,7 @@ The repository to the ROS files used : https://github.com/wadoud01/Thesis-ROS
 
 ---
 
-## **5. Setup Instructions**  
+## **4. Setup Instructions**  
 
 ### **Prerequisites**  
 - **Operating System:** Ubuntu 20.04 (ROS Noetic compatible)  
@@ -79,7 +79,7 @@ The repository to the ROS files used : https://github.com/wadoud01/Thesis-ROS
    - Python 3.x  
 
 ---
-## **6. Usage Guide**  
+## **5. Usage Guide**  
 This section explains how to use the AR-based control system to interact with the Franka Emika Panda robot.  
 
 ### **System Workflow**  
@@ -107,7 +107,7 @@ This section explains how to use the AR-based control system to interact with th
    View real-time status updates (e.g., "Goal Reached," "IK Solving") on the AR text panel.
 
 ---
-## **7. Demonstration**  
+## **6. Demonstration**  
 
 ### **Video Demonstration**  
 A full video demonstration showcasing the AR-based control system in action, including the interaction with the Franka Emika Panda robot:  
@@ -171,7 +171,7 @@ To further improve the demonstration experience:
 - Add task-specific metrics like completion time and accuracy for detailed analysis.  
 
 ---
-## **8. Evaluation and Feedback**
+## **7. Evaluation and Feedback**
 
 ### **User Evaluation Process**
 To assess the usability and performance of the AR-based control system, we conducted user trials where participants completed the task of **grasping a sponge** and **moving it to a target location** using the Hololens 2 interface.
@@ -255,20 +255,5 @@ The evaluation results show that:
 1. The system is **highly usable** with an **SUS score of 83.75**.  
 2. The **workload** is well-balanced, with low physical demand and frustration.  
 3. Users were satisfied with the real-time feedback and intuitive AR interface, ensuring smooth and precise robot manipulation.
-
----
-
-### **Future Improvements Based on Feedback**
-- Develop forwards Kenimatics control for more free control.  
-- Move advanced grasping .  
-- Optimize the interface to further reduce **mental workload**.  
-
----
-
-### **Next Steps**
-The evaluation results will guide future iterations of the system, focusing on enhancing usability and user experience through:  
-- **Additional user trials** with larger participant groups.  
-- **Integration of user-recommended features** for improved performance.  
-- **Comparative analysis** with other control interfaces to further validate the system’s effectiveness.
 
 ---
