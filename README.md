@@ -134,7 +134,10 @@ A full video demonstration showcasing the AR-based control system in action, inc
 
 #### **AR Interface: Buttons and Sliders**  
 The AR interface consists of control buttons, sliders for spatial inputs, and a feedback text panel.  
+<img src="docs/ar_interface.png" alt="AR_interface" width="300px">
 ![AR Interface](docs/ar_interface.png)  
+
+
 
 #### **Hologram Simulation**  
 The robot's motion is visualized as a hologram in the AR environment before executing on the real robot.  
