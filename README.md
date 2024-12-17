@@ -1,4 +1,4 @@
-# **Control of the Franka Panda Robot Based on Augmented Reality**  
+# **Franka Panda Robot Control Based on Augmented Reality**  
 This repository contains the implementation of a control system for the **Franka Emika Panda robotic arm**, utilizing **Augmented Reality (AR)** interfaces and Human-Robot Interaction (HRI). The system integrates ROS, MoveIt, Unity3D, and Hololens 2 to achieve real-time robot control and user interaction.
 
 ---
