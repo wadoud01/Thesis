@@ -1,161 +1,180 @@
-# JointStateSubscriber
+# **Control of the Franka Panda Robot Based on Augmented Reality**  
+This repository contains the implementation of a control system for the **Franka Emika Panda robotic arm**, utilizing **Augmented Reality (AR)** interfaces and Human-Robot Interaction (HRI). The system integrates ROS, MoveIt, Unity3D, and Hololens 2 to achieve real-time robot control and user interaction.
 
-## Overview
-The `JointStateSubscriber` script in Unity subscribes to joint state messages from a ROS network. It updates Unity ArticulationBody components to match joint positions received from the specified ROS topic.
+---
 
-## Issue Description
-When attempting to run the script, the following error occurs:
-This error suggests a mismatch between the number of joints reported in the ROS message and the number of ArticulationBody components in Unity.
+## **Table of Contents**  
+1. [Project Overview](#project-overview)  
+2. [System Components](#system-components)  
+3. [Features](#features)  
+4. [Technologies Used](#technologies-used)  
+5. [Setup Instructions](#setup-instructions)  
+6. [Usage Guide](#usage-guide)  
+7. [Demonstration](#demonstration)  
+8. [Results and Outcomes](#results-and-outcomes)  
+9. [Future Work](#future-work)  
+10. [Acknowledgments](#acknowledgments)  
+11. [Contact](#contact)  
 
-## Code Explanation
+---
 
-### JointStateSubscriber.cs
-```csharp
-using UnityEngine;
-using RosMessageTypes.Sensor;
-using Unity.Robotics.ROSTCPConnector;
-using Unity.Robotics.ROSTCPConnector.ROSGeometry;
-using System.Collections.Generic;
+## **1. Project Overview**  
+This project presents an AR-based control system for the **Franka Panda robotic arm**, combining **robotic simulation** and **augmented reality** to improve usability and interaction:  
 
-public class JointStateSubscriber : MonoBehaviour
-{
-    ROSConnection ros;
-    public string topicName = "/joint_states";
-    public GameObject robot;
-    private ArticulationBody[] jointArticulationBodies;
+- **User Interface:** Designed in Unity3D and displayed on Hololens 2 using MRTK.  
+- **Robot Control:** ROS and MoveIt are used for real-time motion planning.  
+- **Synchronization:** A UDP-based communication protocol enables data transfer between ROS and Unity.  
 
-    void Start()
-    {
-        ros = ROSConnection.instance;
-        ros.Subscribe<JointStateMsg>(topicName, UpdateJointStates);
+The system allows the user to move the robot using AR buttons and sliders, receiving immediate feedback through an AR-based interface.
 
-        // Initialize the joints
-        jointArticulationBodies = robot.GetComponentsInChildren<ArticulationBody>();
-    }
+---
 
-    void UpdateJointStates(JointStateMsg jointStateMessage)
-    {
-        // Ensure the number of joints in the message matches the robot's joints
-        if (jointStateMessage.position.Length != jointArticulationBodies.Length)
-        {
-            Debug.LogError("Joint state message length does not match the number of robot joints.");
-            return;
-        }
+## **2. System Components**  
+The system architecture includes the following key components:  
 
-        // Update each joint's target position
-        for (int i = 0; i < jointArticulationBodies.Length; i++)
-        {
-            var jointDrive = jointArticulationBodies[i].xDrive;
-            jointDrive.target = (float)(jointStateMessage.position[i] * Mathf.Rad2Deg); // Convert from radians to degrees
-            jointArticulationBodies[i].xDrive = jointDrive;
-        }
-    }
-}
+1. **Robot Simulation and Control (ROS):**  
+   - Real-time control and motion planning using MoveIt.  
+   - URDF model of the Franka Panda robot.  
 
+2. **Augmented Reality Interface (Unity3D + Hololens 2):**  
+   - Buttons: "Move Hologram," "Grasp," and "Move Real Robot."  
+   - Sliders: Control the X, Y, Z positions in 3D space.  
+   - Feedback Panel: Displays system status and robot responses.  
 
-/////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////
+3. **Communication Protocol (UDP):**  
+   - Ensures synchronization between ROS (backend) and Unity (frontend).  
 
-// JointStateMsg.cs looks like:
+---
 
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Text;
-using Unity.Robotics.ROSTCPConnector.MessageGeneration;
-using RosMessageTypes.Std;
+## **3. Features**  
+- **AR-Based Interaction:**  
+  Users control the robot through intuitive AR sliders and buttons in real time.  
 
-namespace RosMessageTypes.Sensor
-{
-    [Serializable]
-    public class JointStateMsg : Message
-    {
-        public const string k_RosMessageName = "sensor_msgs/JointState";
-        public override string RosMessageName => k_RosMessageName;
+- **Real-Time Feedback:**  
+  Immediate updates on robot status are displayed on the AR interface.  
 
-        public HeaderMsg header;
-        public string[] name;
-        public double[] position;
-        public double[] velocity;
-        public double[] effort;
+- **Seamless Synchronization:**  
+  UDP ensures continuous communication between Unity and ROS.  
 
-        public JointStateMsg()
-        {
-            this.header = new HeaderMsg();
-            this.name = new string[0];
-            this.position = new double[0];
-            this.velocity = new double[0];
-            this.effort = new double[0];
-        }
+- **Path Planning with MoveIt:**  
+  Safe and accurate robot motion planning.  
 
-        public JointStateMsg(HeaderMsg header, string[] name, double[] position, double[] velocity, double[] effort)
-        {
-            this.header = header;
-            this.name = name;
-            this.position = position;
-            this.velocity = velocity;
-            this.effort = effort;
-        }
+---
 
-        public static JointStateMsg Deserialize(MessageDeserializer deserializer) => new JointStateMsg(deserializer);
+## **4. Technologies Used**  
+- **ROS (Robot Operating System):** Framework for robot control and motion planning.  
+- **MoveIt:** Path planning and motion execution for the Panda robot.  
+- **Unity3D + MRTK:** AR development for Hololens 2.  
+- **UDP Communication:** Real-time synchronization between Unity and ROS.  
+- **Franka Emika Panda:** Robotic arm used for the project.  
 
-        private JointStateMsg(MessageDeserializer deserializer)
-        {
-            this.header = HeaderMsg.Deserialize(deserializer);
-            deserializer.Read(out this.name, deserializer.ReadLength());
-            deserializer.Read(out this.position, sizeof(double), deserializer.ReadLength());
-            deserializer.Read(out this.velocity, sizeof(double), deserializer.ReadLength());
-            deserializer.Read(out this.effort, sizeof(double), deserializer.ReadLength());
-        }
+---
 
-        public override void SerializeTo(MessageSerializer serializer)
-        {
-            serializer.Write(this.header);
-            serializer.WriteLength(this.name);
-            serializer.Write(this.name);
-            serializer.WriteLength(this.position);
-            serializer.Write(this.position);
-            serializer.WriteLength(this.velocity);
-            serializer.Write(this.velocity);
-            serializer.WriteLength(this.effort);
-            serializer.Write(this.effort);
-        }
+## **5. Setup Instructions**  
 
-        public override string ToString()
-        {
-            return "JointStateMsg: " +
-            "\nheader: " + header.ToString() +
-            "\nname: " + System.String.Join(", ", name.ToList()) +
-            "\nposition: " + System.String.Join(", ", position.ToList()) +
-            "\nvelocity: " + System.String.Join(", ", velocity.ToList()) +
-            "\neffort: " + System.String.Join(", ", effort.ToList());
-        }
+### **Prerequisites**  
+- **Operating System:** Ubuntu 20.04 (ROS Noetic compatible)  
+- **Software:**  
+   - ROS Noetic installed  
+   - Unity3D (2021.x or higher)  
+   - MRTK Toolkit for Hololens 2  
+   - Python 3.x  
 
-#if UNITY_EDITOR
-        [UnityEditor.InitializeOnLoadMethod]
-#else
-        [UnityEngine.RuntimeInitializeOnLoadMethod]
-#endif
-        public static void Register()
-        {
-            MessageRegistry.Register(k_RosMessageName, Deserialize);
-        }
-    }
-}
+---
 
-//////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////
+### **Installation Steps**  
 
-** this is what rostopic echo ./joint_states gave me when I run Panda robot on ROS:
-  - panda_joint1
-  - panda_joint2
-  - panda_joint3
-  - panda_joint4
-  - panda_joint5
-  - panda_joint6
-  - panda_joint7
-  - panda_finger_joint1
-  - panda_finger_joint2
-position: [-0.0015821584717166104, -0.7943869903723391, 0.0012281290466464867, -2.3638982697954374, 0.0006501100753908418, 1.5828537411713262, 0.7846784180658801, 0.0009995241610755343, 0.0009995241610755343]
-velocity: [0.0035677726280856407, 0.000822763804113286, -0.0063275332532466595, 0.00279297697337853, -0.005301808906914612, -0.0056556699105319574, -0.0026148669173828316, 8.717624400309522e-05, 8.717624400309522e-05]
-effort: [-0.057221632978472096, 3.7724317682463404, 0.6342069921164082, -22.095580280396128, -0.660068477303177, -2.326199971163367, 0.04994594295633568, -1.721518465797584e-05, -1.721518465797584e-05]
+1. **Clone the Repository:**  
+   ```bash
+   git clone https://github.com/yourusername/franka_panda_ar_control.git
+   cd franka_panda_ar_control
+# **Control of the Franka Panda Robot Based on Augmented Reality**  
+This repository contains the implementation of a control system for the **Franka Emika Panda robotic arm**, utilizing **Augmented Reality (AR)** interfaces and Human-Robot Interaction (HRI). The system integrates ROS, MoveIt, Unity3D, and Hololens 2 to achieve real-time robot control and user interaction.
+
+---
+
+## **Table of Contents**  
+1. [Project Overview](#project-overview)  
+2. [System Components](#system-components)  
+3. [Features](#features)  
+4. [Technologies Used](#technologies-used)  
+5. [Setup Instructions](#setup-instructions)  
+6. [Usage Guide](#usage-guide)  
+7. [Demonstration](#demonstration)  
+8. [Results and Outcomes](#results-and-outcomes)  
+9. [Future Work](#future-work)  
+10. [Acknowledgments](#acknowledgments)  
+11. [Contact](#contact)  
+
+---
+
+## **1. Project Overview**  
+This project presents an AR-based control system for the **Franka Panda robotic arm**, combining **robotic simulation** and **augmented reality** to improve usability and interaction:  
+
+- **User Interface:** Designed in Unity3D and displayed on Hololens 2 using MRTK.  
+- **Robot Control:** ROS and MoveIt are used for real-time motion planning.  
+- **Synchronization:** A UDP-based communication protocol enables data transfer between ROS and Unity.  
+
+The system allows the user to move the robot using AR buttons and sliders, receiving immediate feedback through an AR-based interface.
+
+---
+
+## **2. System Components**  
+The system architecture includes the following key components:  
+
+1. **Robot Simulation and Control (ROS):**  
+   - Real-time control and motion planning using MoveIt.  
+   - URDF model of the Franka Panda robot.  
+
+2. **Augmented Reality Interface (Unity3D + Hololens 2):**  
+   - Buttons: "Move Hologram," "Grasp," and "Move Real Robot."  
+   - Sliders: Control the X, Y, Z positions in 3D space.  
+   - Feedback Panel: Displays system status and robot responses.  
+
+3. **Communication Protocol (UDP):**  
+   - Ensures synchronization between ROS (backend) and Unity (frontend).  
+
+---
+
+## **3. Features**  
+- **AR-Based Interaction:**  
+  Users control the robot through intuitive AR sliders and buttons in real time.  
+
+- **Real-Time Feedback:**  
+  Immediate updates on robot status are displayed on the AR interface.  
+
+- **Seamless Synchronization:**  
+  UDP ensures continuous communication between Unity and ROS.  
+
+- **Path Planning with MoveIt:**  
+  Safe and accurate robot motion planning.  
+
+---
+
+## **4. Technologies Used**  
+- **ROS (Robot Operating System):** Framework for robot control and motion planning.  
+- **MoveIt:** Path planning and motion execution for the Panda robot.  
+- **Unity3D + MRTK:** AR development for Hololens 2.  
+- **UDP Communication:** Real-time synchronization between Unity and ROS.  
+- **Franka Emika Panda:** Robotic arm used for the project.  
+
+---
+
+## **5. Setup Instructions**  
+
+### **Prerequisites**  
+- **Operating System:** Ubuntu 20.04 (ROS Noetic compatible)  
+- **Software:**  
+   - ROS Noetic installed  
+   - Unity3D (2021.x or higher)  
+   - MRTK Toolkit for Hololens 2  
+   - Python 3.x  
+
+---
+
+### **Installation Steps**  
+
+1. **Clone the Repository:**  
+   ```bash
+   git clone https://github.com/yourusername/franka_panda_ar_control.git
+   cd franka_panda_ar_control
