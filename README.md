@@ -7,14 +7,11 @@ This repository contains the implementation of a control system for the **Franka
 1. [Project Overview](#project-overview)  
 2. [System Components](#system-components)  
 3. [Features](#features)  
-4. [Technologies Used](#technologies-used)  
-5. [Setup Instructions](#setup-instructions)  
-6. [Usage Guide](#usage-guide)  
-7. [Demonstration](#demonstration)  
-8. [Results and Outcomes](#results-and-outcomes)  
-9. [Future Work](#future-work)  
-10. [Acknowledgments](#acknowledgments)  
-11. [Contact](#contact)  
+4. [Setup Instructions](#setup-instructions)  
+5. [Usage Guide](#usage-guide)  
+6. [Demonstration](#demonstration)  
+7. [Results and Outcomes](#results-and-outcomes)  
+
 
 ---
 
