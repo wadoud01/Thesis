@@ -99,7 +99,7 @@ This section explains how to use the AR-based control system to interact with th
    Move Real Robot: Moves the physical robot to the defined position.
 
    3. Feedback Panel:
-   View real-time status updates (e.g., "Goal Reached," "IK Solving") on the AR text panel.
+   View real-time status updates (e.g., "Moving...," "Coordinations (X, Y, Z) sent " "Gripper closed") on the AR text panel.
 
 ---
 ## **6. Demonstration**  
