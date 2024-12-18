@@ -143,15 +143,11 @@ The AR interface consists of control buttons, sliders for spatial inputs, and a 
 #### **Hologram Simulation**  
 The robot's motion is visualized as a hologram in the AR environment before executing on the real robot.
 
-
-
-
 #### **Physical Robot Execution**  
-The Franka Panda robot successfully moves to the target position and performs a grasping action.  
-![Real Robot Execution](docs/real_robot_execution.png)  
+The Franka Panda robot successfully moves to the target position and performs a grasping action.
 
 <p align="center">
-<img src="docs/Holo_Vision.gif" alt="Demo of the system" width="560"><img src="docs/Real_Robot.gif" alt="Demo of the system" width="170">
+<img src="docs/Holo_Vision.gif" alt="Demo of the system" width="545"><img src="docs/Real_Robot.gif" alt="Demo of the system" width="170">
 </p>
 
 ---
