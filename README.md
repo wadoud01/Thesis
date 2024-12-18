@@ -24,8 +24,8 @@ This project presents an AR-based control system for the **Franka Panda robotic 
 - **Real-Time Data Transformation:** The Data are transformed using UDP protocol to another PC which is connected to the real robot, waiting for the user permission in order to be moved.   
 
 The system allows the user to move the robot using sliders, or a sphere which represents the desired point to be reached, receiving immediate feedback through an AR-based interface.
+ffmpeg -i docs/User_Holo.MOV -vf "fps=10,scale=600:-1" docs/User_Holo.gif
 
-[![Watch the video]()(docs/Holo_User.MOV)]
 
 ---
 
