@@ -136,24 +136,22 @@ A full video demonstration showcasing the AR-based control system in action, inc
 
 #### **AR Interface: Buttons and Sliders**  
 The AR interface consists of control buttons, sliders for spatial inputs, and a feedback text panel.  
-<p align="center">
-<img src="docs/ar_interface.png" alt="AR_interface" width="200px">
-</p>
+
+<img src="docs/ar_interface.png" alt="AR_interface" width="300px">
+
 
 #### **Hologram Simulation**  
 The robot's motion is visualized as a hologram in the AR environment before executing on the real robot.
 
-<p align="center">
-<img src="docs/Holo_Vision.gif" alt="Demo of the system" width="400">
-</p>
+<img src="docs/Holo_Vision.gif" alt="Demo of the system" width="500">
+
 
 #### **Physical Robot Execution**  
 The Franka Panda robot successfully moves to the target position and performs a grasping action.  
 ![Real Robot Execution](docs/real_robot_execution.png)  
 
-<p align="center">
-<img src="docs/Real_Robot.gif" alt="Demo of the system" width="300">
-</p>
+<img src="docs/Real_Robot.gif" alt="Demo of the system" width="170">
+
 ---
 
 ### **Performance Highlights**  
