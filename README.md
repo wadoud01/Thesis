@@ -24,6 +24,10 @@ This project presents an AR-based control system for the **Franka Panda robotic 
 - **Real-Time Data Transformation:** The Data are transformed using UDP protocol to another PC which is connected to the real robot, waiting for the user permission in order to be moved.   
 
 The system allows the user to move the robot using sliders, or a sphere which represents the desired point to be reached, receiving immediate feedback through an AR-based interface.
+**Hologram and Robot Alignment**
+
+The holographic robot is perfectly aligned in size and position with the real robot. However, due to the recording limitations of the Hololens 2, videos may appear to show a misalignment or scale difference between the hologram and the physical robot. This is an artifact of the recording process, and in real-time, the hologram and robot are accurately overlapped.
+
 
 <p align="center">
 <img src="docs/User_Holo.gif" alt="Demo of the system" width="200"><img src="docs/Holo_Screen.gif" alt="Demo of the system" width="628">
