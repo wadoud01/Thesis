@@ -27,6 +27,7 @@ The system allows the user to move the robot using sliders, or a sphere which re
 
 
 <u> **Important Note:** </u>
+============================
 
 The holographic robot is perfectly aligned in size and position with the real robot. However, due to the recording limitations of the Hololens 2, videos may appear to show a misalignment or scale difference between the hologram and the physical robot. This is an artifact of the recording process, and in real-time, the hologram and robot are accurately overlapped.
 
