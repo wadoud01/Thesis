@@ -147,7 +147,7 @@ The robot's motion is visualized as a hologram in the AR environment before exec
 The Franka Panda robot successfully moves to the target position and performs a grasping action.
 
 <p align="center">
-<img src="docs/Holo_Vision.gif" alt="Demo of the system" width="545"><img src="docs/Real_Robot.gif" alt="Demo of the system" width="170">
+<img src="docs/Holo_Vision.gif" alt="Demo of the system" width="539"><img src="docs/Real_Robot.gif" alt="Demo of the system" width="170">
 </p>
 
 ---
