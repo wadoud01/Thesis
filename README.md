@@ -12,6 +12,11 @@ This repository contains the implementation of a control system for the **Franka
 6. [Demonstration](#demonstration)  
 7. [Results and Outcomes](#results-and-outcomes)  
 
+<video width="600" controls>
+  <source src="docs/User_Holo.MOV" type="video/MOV">
+  Your browser does not support the video tag.
+</video>
+
 
 ---
 
@@ -24,6 +29,7 @@ This project presents an AR-based control system for the **Franka Panda robotic 
 - **Real-Time Data Transformation:** The Data are transformed using UDP protocol to another PC which is connected to the real robot, waiting for the user permission in order to be moved.   
 
 The system allows the user to move the robot using sliders, or a sphere which represents the desired point to be reached, receiving immediate feedback through an AR-based interface.
+<img src="path-to-your-image" alt="Description of the image" width="600" />
 
 ---
 
