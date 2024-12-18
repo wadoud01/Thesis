@@ -106,15 +106,8 @@ This section explains how to use the AR-based control system to interact with th
    View real-time status updates (e.g., "Moving...," "Coordinations (X, Y, Z) sent " "Gripper closed") on the AR text panel.
 
 ---
-## **6. Demonstration**  
 
-### **Video Demonstration**  
-A full video demonstration showcasing the AR-based control system in action, including the interaction with the Franka Emika Panda robot:  
-📹 **[Watch the Demo Video Here](#)**  
-
----
-
-### **Workflow Overview**  
+### **6. Workflow Overview**  
 1. **Setup and Initialization:**  
    - ROS nodes are launched to control the Panda robot.  
    - Unity AR application is deployed to the **Hololens 2**.  
