@@ -12,10 +12,8 @@ This repository contains the implementation of a control system for the **Franka
 6. [Demonstration](#demonstration)  
 7. [Results and Outcomes](#results-and-outcomes)  
 
-<video width="600" controls>
-  <source src="docs/User_Holo.MOV" type="video/MOV">
-  Your browser does not support the video tag.
-</video>
+![Demo Video](docs/User_Holo.MOV)
+
 
 
 ---
