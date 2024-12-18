@@ -25,10 +25,7 @@ This project presents an AR-based control system for the **Franka Panda robotic 
 
 The system allows the user to move the robot using sliders, or a sphere which represents the desired point to be reached, receiving immediate feedback through an AR-based interface.
 
-ffmpeg -i docs/User_Holo.MOV -vf "fps=10,scale=600:-1" docs/User_Holo.gif
-
-![Demo Video](docs/User_Holo.gif)
-
+[![Watch the Video](docs/User_Holo_Thumbnail.png)](docs/User_Holo.MOV)
 
 ---
 
