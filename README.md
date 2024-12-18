@@ -27,7 +27,7 @@ The system allows the user to move the robot using sliders, or a sphere which re
 
 
 <img src="docs/User_Holo.gif" alt="Demo of the system" width="300">
-
+<img src="docs/Holo_Screen.gif" alt="Demo of the system" width="600">
 
 
 ---
