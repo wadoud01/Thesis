@@ -151,7 +151,7 @@ The Franka Panda robot successfully moves to the target position and performs a 
 ![Real Robot Execution](docs/real_robot_execution.png)  
 
 <p align="center">
-<img src="docs/Holo_Vision.gif" alt="Demo of the system" width="600"><img src="docs/Real_Robot.gif" alt="Demo of the system" width="170">
+<img src="docs/Holo_Vision.gif" alt="Demo of the system" width="560"><img src="docs/Real_Robot.gif" alt="Demo of the system" width="170">
 </p>
 
 ---
