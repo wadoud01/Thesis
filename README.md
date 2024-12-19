@@ -258,3 +258,6 @@ The evaluation results show that:
 2. The **workload** is well-balanced, with low physical demand and frustration.  
 3. Users were satisfied with the real-time feedback and intuitive AR interface, ensuring smooth and precise robot manipulation.
 
+## Author  
+**Wadoud Guelmami**  
+
