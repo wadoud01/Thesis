@@ -214,7 +214,7 @@ We utilized two standardized evaluation methods:
 
 ### **Evaluation Results**
 
-#### **1. System Usability Scale (SUS) Results**
+#### **1. System Usability Scale (SUS) Results** "Still not finished"
 | User | SUS Score (0–100) | Comments                        |
 |------|------------------|---------------------------------|
 | 1    | 85               | "Very intuitive and smooth!"    |
