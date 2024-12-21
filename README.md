@@ -221,6 +221,17 @@ We utilized two standardized evaluation methods:
 | 2    | 78               | "Easy to use after a few tries."|
 | 3    | 90               | "The feedback panel helped a lot."|
 | 4    | 82               | "Slider control was precise."   |
+|  6  |                |    |
+|  7  |                |    |
+|  8  |                |    |
+|  9  |                |    |
+|  10  |                |    |
+|  11  |                |    |
+|  12  |                |    |
+|  13  |                |    |
+|  14  |                |    |
+|  15  |                |    |
+
 
 **Average SUS Score**: **83.75/100**  
 - **Interpretation**: An SUS score above 80 indicates excellent usability, meaning users found the system to be highly user-friendly and effective.
