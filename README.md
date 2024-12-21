@@ -233,7 +233,7 @@ We utilized two standardized evaluation methods:
 |  15  |                |    |
 
 
-**Average SUS Score**: **83.75/100**  
+**Average SUS Score**: **83.75/100**  "Current, but not final"
 - **Interpretation**: An SUS score above 80 indicates excellent usability, meaning users found the system to be highly user-friendly and effective.
 
 ---
