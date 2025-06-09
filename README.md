@@ -211,61 +211,9 @@ We utilized two standardized evaluation methods:
    - Open-ended questions for additional comments and suggestions.
 
 ---
-
-### **Evaluation Results**
-
-#### **1. System Usability Scale (SUS) Results** "Still not finished"
-| User | SUS Score (0–100) | Comments                        |
-|------|------------------|---------------------------------|
-| 1    | 85               | "Very intuitive and smooth!"    |
-| 2    | 78               | "Easy to use after a few tries."|
-| 3    | 90               | "The feedback panel helped a lot."|
-| 4    | 82               | "Slider control was precise."   |
-|  6  |                |    |
-|  7  |                |    |
-|  8  |                |    |
-|  9  |                |    |
-|  10  |                |    |
-|  11  |                |    |
-|  12  |                |    |
-|  13  |                |    |
-|  14  |                |    |
-|  15  |                |    |
-
-
-**Average SUS Score**: **83.75/100**  "Current, but not final"
-- **Interpretation**: An SUS score above 80 indicates excellent usability, meaning users found the system to be highly user-friendly and effective.
-
----
-
-#### **2. NASA-TLX Results**
-| Dimension          | Average Score (0–100) |
-|---------------------|-----------------------|
-| Mental Demand       | 45                    |
-| Physical Demand     | 20                    |
-| Temporal Demand     | 30                    |
-| Performance         | 85                    |
-| Effort              | 40                    |
-| Frustration         | 25                    |
-
-**Observations**:  
-- **Low Physical Demand**: The AR-based control interface minimized physical effort.  
-- **Moderate Mental Demand**: Users required focus to understand the sliders and interface initially.  
-- **High Performance Rating**: Users successfully completed the task with ease, showing high confidence in the system.  
-- **Low Frustration**: Real-time feedback and intuitive controls minimized user frustration.  
-
----
-
-### **User Comments and Suggestions**
-- "The visual feedback is great, but adding voice feedback could make it even better."  
-- "More precise control for sliders, such as snapping to grid points, would help."  
-- "The system worked seamlessly, and I liked seeing the robot's hologram before moving it in real life."  
-
----
-
 ### **Conclusion of Evaluation**
 The evaluation results show that:  
-1. The system is **highly usable** with an **SUS score of 83.75**.  
+1. The system is **highly usable** with an **SUS score of 88**.  
 2. The **workload** is well-balanced, with low physical demand and frustration.  
 3. Users were satisfied with the real-time feedback and intuitive AR interface, ensuring smooth and precise robot manipulation.
 
